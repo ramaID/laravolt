@@ -24,6 +24,7 @@ jobs:
       run: cd laravel && chmod -R 777 storage bootstrap/cache
     - name: Create Database
       run: |
+        cd laravel
         mkdir -p database
         touch database/database.sqlite
     - name: Install package

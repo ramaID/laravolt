@@ -40,7 +40,7 @@ jobs:
         mkdir -p database
         touch database/database.sqlite
     - name: Install package
-      run: cd laravel && composer config repositories.laravolt path ./.. && composer require ramaid/laravolt:dev-main && composer require brianium/paratest && php artisan laravolt:install
+      run: cd laravel && composer config repositories.laravolt path ./.. && composer require ramaid/laravolt:dev-main && composer require brianium/paratest --dev && php artisan laravolt:install
     - name: Install package js
       run: |
         cd laravel
@@ -54,6 +54,6 @@ jobs:
         php artisan migrate
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
-        DB_CONNECTION: sqlite
+        DB_CONNECTION: ':memory:'
         DB_DATABASE: database/database.sqlite
-      run: cd laravel && php artisan test --parallel
+      run: cd laravel && php artisan test -p

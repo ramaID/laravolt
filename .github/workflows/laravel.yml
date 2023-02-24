@@ -54,6 +54,6 @@ jobs:
         php artisan migrate
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
-        DB_CONNECTION: ':memory:'
-        DB_DATABASE: database/database.sqlite
+        DB_CONNECTION: sqlite
+        DB_DATABASE: ':memory:'
       run: cd laravel && php artisan test -p

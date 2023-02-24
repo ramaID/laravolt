@@ -42,11 +42,17 @@ jobs:
     - name: Install package
       run: |
         cd laravel
-        composer config repositories.laravolt path ./.. && composer require ramaid/laravolt:dev-main && php artisan laravolt:install
+        composer config repositories.laravolt path ./..
+        composer require ramaid/laravolt:dev-main -q --no-ansi --no-interaction --no-scripts --no-progress
+        php artisan laravolt:install
     - name: Install package js
       run: |
         cd laravel
         npm install tailwindcss && npm run build
+    - name: Migrate database
+      run: |
+        cd laravel
+        php artisan migrate
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite

@@ -40,7 +40,7 @@ jobs:
         mkdir -p database
         touch database/database.sqlite
     - name: Install package
-      run: cd laravel && composer config repositories.laravolt path ./.. && composer require ramaid/laravolt:dev-main -q --no-ansi --no-interaction --no-scripts --no-progress && php artisan laravolt:install
+      run: cd laravel && composer config repositories.laravolt path ./.. && composer require ramaid/laravolt:dev-main && php artisan laravolt:install
     - name: Install package js
       run: |
         cd laravel

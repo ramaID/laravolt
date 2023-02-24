@@ -56,4 +56,4 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: cd laravel && XDEBUG_MODE=coverage php artisan test --coverage --parallel
+      run: cd laravel && php artisan test --parallel

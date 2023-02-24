@@ -18,6 +18,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install Laravel
       run: composer create-project laravel/laravel -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    - name: Copy .env
+      run: |
+        cd laravel
+        php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
       run: |
         cd laravel

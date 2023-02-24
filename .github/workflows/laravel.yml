@@ -46,6 +46,9 @@ jobs:
         cd laravel
         npm install tailwindcss && npm run build
     - name: Migrate database
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlite
       run: |
         cd laravel
         php artisan migrate

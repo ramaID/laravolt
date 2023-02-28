@@ -11,16 +11,23 @@ class SettingsController extends Controller
 {
     public function edit()
     {
+        $config = config('laravolt.ui');
+
+        if (str_contains($config['brand_image'], '<svg height="50"')) {
+            $config['brand_image'] = null;
+        }
+
         return view('laravolt::settings.edit');
     }
 
     public function update()
     {
         $form = collect(config('laravolt.platform.settings'))->filter(fn($item) => isset($item['name']));
+
         foreach ($form as $field) {
             $key = $field['name'];
-            if ($field['type'] === Field::UPLOADER) {
-                setting(["laravolt.ui.$key" => request()->media($key)->first()]);
+            if ($field['type'] === Field::UPLOADER && $url = request()->media($key)->first()) {
+                setting(["laravolt.ui.$key" => $url]);
             } else {
                 setting(["laravolt.ui.$key" => request($key, '')]);
             }

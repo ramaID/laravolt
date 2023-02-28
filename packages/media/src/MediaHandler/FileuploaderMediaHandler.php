@@ -20,7 +20,7 @@ class FileuploaderMediaHandler
     protected function upload()
     {
         /** @var \Spatie\MediaLibrary\InteractsWithMedia $user */
-        $user = auth()->user() ?? Guest::first();
+        $user = auth()->user() ?? Guest::query()->create();
 
         try {
             $media = $user->addMediaFromRequest(request('_key'))->toMediaCollection();

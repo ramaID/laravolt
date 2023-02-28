@@ -17,7 +17,7 @@ class SettingsController extends Controller
             $config['brand_image'] = null;
         }
 
-        return view('laravolt::settings.edit');
+        return view('laravolt::settings.edit', compact('config'));
     }
 
     public function update()

@@ -48,9 +48,9 @@ class FileuploaderMediaHandler
             ];
 
             report($e);
-        } finally {
-            return response()->json($response);
         }
+
+        return response()->json($response);
     }
 
     protected function delete()

@@ -1,6 +1,7 @@
 {
     "name": "ramaid/laravolt",
-    "description": "The Laravolt Platform.",
+    "description": "Personal usage of Laravolt Platform.",
+    "version": "6.0.0-rc.1",
     "license": "MIT",
     "config": {
         "sort-packages": true
